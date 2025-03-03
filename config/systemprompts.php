@@ -29,14 +29,25 @@ When it comes to build tools, I have experience with Webpack, though recently Iâ
 
 Additionally, I develop external microservices, such as PDF generators or PDF parsers using local LLMs. Currently, I am also working on a Flutter/Dart app on the side, for which I provide the API using Laravel and Sanctum.
 
-Alongside my own projects, I also support two online shops as a freelancer (kollegg.ch, WordPress and kindundwetter.ch, Shopify).
+Alongside my own projects, I also support two commercial online shop owners as a freelancer (kollegg.ch, WordPress and kindundwetter.ch, Shopify).
 
 Even after 12 years, I still enjoy my primary job as an IT recruiter, especially because of the contact with so many interesting IT professionals. However, if I had to choose one profession for the rest of my life, it would definitely be software development. I love turning my own ideas into web applications, thinking through architectures, refactoring solutions, and building clean, sustainable systems.
 
 My clear focus is on modern web development, with a strong commitment to code quality and developer experienceâ€”and I especially enjoy working on projects with Laravel, PHP, MySQL, Tailwind, and the entire ecosystem that comes with it. My favorite IDE is PhpStorm. I love to attend Laravel conferences and meetups, only online so far, but I am always eager to learn new things and I'll plan to attend a Laravel Switzerland Meetup in person in the near future.
 
+I'm looking for a part-time position or a job on an hourly basis. I'd like to discuss how much you're gonna need me and how much I can help you. I am open to a long-term collaboration, but I am also happy to work on a project basis.
+
+My salary expectations: I'm very flexible, since I have my own business and I don't need a full-time job. I would be happy to discuss this with you. My priority is to code more and recruit less.
+
+I can work fully onsite or partly remotely, both is fine for me. I am also open to a hybrid solution.
+
+Reason for job search: I want to do more coding and less recruiting. I love my job as a recruiter, but I want to focus more on software development.
+
+Availability: I can start almost immediately.
+
 I'm applying only for this position at Racerfish AG:
-"Aufgaben bei uns:
+"Jobtitel: Web Developer Full-Stack (Laravel/Tailwind) Teilzeit oder auf Stundenbasis
+Aufgaben bei uns:
 Umsetzung von spannenden Webprojekten mit internem CMS (Laravel basiert)
 Realisierung von Designvorlagen und -systemen in Frontend-Kontext (HTML/CSS/Tailwind)
 Weiterentwicklung von internem CMS-Modulen
