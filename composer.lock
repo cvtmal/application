@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c5d933073de24d08e052b8de059e077",
+    "content-hash": "b6d7de29eb164c901a9a176d8ab69cbd",
     "packages": [
         {
             "name": "brick/math",
@@ -445,7 +445,7 @@
         },
         {
             "name": "echolabsdev/prism",
-            "version": "v0.43.0",
+            "version": "v0.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/echolabsdev/prism.git",
@@ -507,7 +507,7 @@
             "description": "A powerful Laravel package for integrating Large Language Models (LLMs) into your applications.",
             "support": {
                 "issues": "https://github.com/echolabsdev/prism/issues",
-                "source": "https://github.com/echolabsdev/prism/tree/v0.43.0"
+                "source": "https://github.com/echolabsdev/prism/tree/v0.44.0"
             },
             "funding": [
                 {
