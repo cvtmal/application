@@ -2,8 +2,8 @@
 
 use App\Services\ChatService;
 
-test('chat service initializes with history', function () {
-    $chatService = new ChatService();
+test('chat service initializes with history', function (): void {
+    $chatService = new ChatService;
 
     $history = [
         ['type' => 'user', 'content' => 'Hello'],

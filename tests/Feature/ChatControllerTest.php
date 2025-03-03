@@ -3,27 +3,26 @@
 use App\Services\ChatService;
 use Inertia\Testing\AssertableInertia as Assert;
 
-beforeEach(function () {
-    $this->mock(ChatService::class, function ($mock) {
+beforeEach(function (): void {
+    $this->mock(ChatService::class, function ($mock): void {
         $mock->shouldReceive('initializeWithHistory')->andReturnSelf();
         $mock->shouldReceive('getResponseForMessage')
             ->andReturn('This is a mocked response from the AI assistant.');
     });
 });
 
-test('chat index page can be rendered', function () {
+test('chat index page can be rendered', function (): void {
     $response = $this->get('/');
 
     $response->assertStatus(200);
-    $response->assertInertia(fn (Assert $page) =>
-    $page->component('welcome')
+    $response->assertInertia(fn (Assert $page) => $page->component('welcome')
         ->has('chatHistory')
     );
 });
 
-test('user can submit a message', function () {
+test('user can submit a message', function (): void {
     $response = $this->post('/submit-message', [
-        'message' => 'Hello, who are you?'
+        'message' => 'Hello, who are you?',
     ]);
 
     $response->assertRedirect('/');
@@ -36,7 +35,7 @@ test('user can submit a message', function () {
     expect($chatHistory[1]['type'])->toBe('assistant');
 });
 
-test('user can clear chat history', function () {
+test('user can clear chat history', function (): void {
     // First add some chat history
     session(['chat_history' => [
         ['type' => 'user', 'content' => 'Question 1'],
@@ -49,19 +48,19 @@ test('user can clear chat history', function () {
     expect(session('chat_history'))->toBeNull();
 });
 
-test('message validation fails with empty message', function () {
+test('message validation fails with empty message', function (): void {
     $response = $this->post('/submit-message', [
-        'message' => ''
+        'message' => '',
     ]);
 
     $response->assertSessionHasErrors(['message']);
 });
 
-test('message validation fails with too long message', function () {
+test('message validation fails with too long message', function (): void {
     $longMessage = str_repeat('a', 1500);
 
     $response = $this->post('/submit-message', [
-        'message' => $longMessage
+        'message' => $longMessage,
     ]);
 
     $response->assertSessionHasErrors(['message']);

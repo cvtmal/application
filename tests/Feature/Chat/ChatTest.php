@@ -1,19 +1,18 @@
 <?php
 
-use App\Services\ChatService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia as Assert;
 
 uses(RefreshDatabase::class);
 
-test('chat system maintains conversation history across requests', function () {
+test('chat system maintains conversation history across requests', function (): void {
     $this->post('/submit-message', [
-        'message' => 'First question'
+        'message' => 'First question',
     ]);
 
     // Second msg
     $response = $this->post('/submit-message', [
-        'message' => 'Second question'
+        'message' => 'Second question',
     ]);
 
     $response->assertRedirect('/');
@@ -22,8 +21,7 @@ test('chat system maintains conversation history across requests', function () {
     expect($chatHistory)->toHaveCount(4); // 2 from user + 2 from ai response
 
     $response = $this->get('/');
-    $response->assertInertia(fn (Assert $page) =>
-        $page->component('welcome')
-            ->has('chatHistory', 4)
+    $response->assertInertia(fn (Assert $page) => $page->component('welcome')
+        ->has('chatHistory', 4)
     );
 });

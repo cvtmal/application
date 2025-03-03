@@ -8,7 +8,7 @@ Route::get('/', [ChatController::class, 'index'])->name('chat.index');
 Route::post('/submit-message', [ChatController::class, 'submitMessage'])->name('chat.submit');
 Route::get('/clear-chat', [ChatController::class, 'clearChat'])->name('chat.clear');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
