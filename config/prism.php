@@ -11,6 +11,7 @@ return [
             'api_key' => env('OPENAI_API_KEY', ''),
             'organization' => env('OPENAI_ORGANIZATION', null),
             'project' => env('OPENAI_PROJECT', null),
+            'default_model' => env('OPENAI_DEFAULT_MODEL', 'gpt-4o'),
         ],
         'anthropic' => [
             'api_key' => env('ANTHROPIC_API_KEY', ''),

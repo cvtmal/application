@@ -4,11 +4,9 @@ use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
-
-Route::post('/submit-message', [ChatController::class, 'prompt'])->name('prompt');
+Route::get('/', [ChatController::class, 'index'])->name('chat.index');
+Route::post('/submit-message', [ChatController::class, 'submitMessage'])->name('chat.submit');
+Route::get('/clear-chat', [ChatController::class, 'clearChat'])->name('chat.clear');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
