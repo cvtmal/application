@@ -74,7 +74,7 @@ export default function Welcome({ chatHistory = [] }) {
 
             <div className="min-h-screen w-full flex flex-col items-center justify-start bg-[#E8F1F2] p-4 pt-8">
                 <div className="w-full max-w-2xl flex flex-col items-center">
-                    <div className="w-full flex flex-col items-center justify-center  mb-10">
+                    <div className="w-full flex flex-col items-center justify-center -mt-10 mb-10">
                         <div className="flex flex-col md:relative md:w-80 md:h-60">
                             <div className="w-full max-w-xs mx-auto mb-2 md:mb-0 md:absolute md:w-50 md:top-15 md:-left-30 md:z-10">
                                 <video
@@ -95,7 +95,7 @@ export default function Welcome({ chatHistory = [] }) {
 
                     <Card className="w-full shadow-lg">
                         <CardHeader className="border-b flex flex-row justify-between items-center p-4">
-                            <CardTitle className="text-xl font-semibold">Hey! Damian ist gerade nicht da, chatte doch mit seiner AI...</CardTitle>
+                            <CardTitle className="text-l font-semibold">Hey! Ich bin Damians AI. Was möchtest Du wissen?</CardTitle>
                             {chatHistory.length > 0 && (
                                 <Button
                                     variant="outline"
@@ -116,7 +116,7 @@ export default function Welcome({ chatHistory = [] }) {
                                 <div className="space-y-4 pb-4">
                                     {chatHistory.length === 0 && (
                                         <div className="text-center text-gray-500 py-10">
-                                            Start a conversation by asking a question about Damian!
+                                            Beginne ein Gespräch, indem du eine Frage über Real Life Damian stellst! AI Damian wird dir antworten.
                                         </div>
                                     )}
 
@@ -159,7 +159,7 @@ export default function Welcome({ chatHistory = [] }) {
                                 <div className="flex space-x-2">
                                     <Input
                                         type="text"
-                                        placeholder="Ask about Damian..."
+                                        placeholder="Frag mich..."
                                         className="w-full"
                                         value={data.message}
                                         onChange={e => setData('message', e.target.value)}

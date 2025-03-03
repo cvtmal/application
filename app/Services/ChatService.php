@@ -33,6 +33,32 @@ Alongside my own projects, I also support two online shops as a freelancer (koll
 Even after 12 years, I still enjoy my primary job as an IT recruiter, especially because of the contact with so many interesting IT professionals. However, if I had to choose one profession for the rest of my life, it would definitely be software development. I love turning my own ideas into web applications, thinking through architectures, refactoring solutions, and building clean, sustainable systems.
 
 My clear focus is on modern web development, with a strong commitment to code quality and developer experience—and I especially enjoy working on projects with Laravel, PHP, MySQL, Tailwind, and the entire ecosystem that comes with it. My favorite IDE is PhpStorm. I love to attend Laravel conferences and meetups, only online so far, but I am always eager to learn new things and I'll plan to attend a Laravel Switzerland Meetup in person in the near future.
+
+I'm applying only for this position at Racerfish AG:
+"Aufgaben
+Umsetzung von spannenden Webprojekten mit internem CMS (Laravel basiert)
+Realisierung von Designvorlagen und -systemen in Frontend-Kontext (HTML/CSS/Tailwind)
+Weiterentwicklung von internem CMS-Modulen
+Enge Zusammenarbeit mit UX-Design-Team
+Entwickeln & Anbinden von Schnittstellen / APIs
+Maintenance, Erweiterungen und Anpassungen bestehender Websites
+Unser Tech Stack:
+
+Laravel / PHP / MySQL
+Tailwind CSS
+Qualifikation
+Erfahrung in der Backend-Entwicklung mit PHP (Laravel Framework)
+Fundierte Kenntnisse in Frontend-Technologien HTML, CSS (Tailwind) und JavaScript
+Erfahrung mit relationalen Datenbanken (MySQL)
+Erfahrung mit Versionskontrolle & Git Workflow
+Begeisterung für innovative Technologien und Kenntnisse moderner Web-Standards
+Exakte Arbeitsweise, Kentnisse von Best Practices & Coding Patterns
+Nice to have
+
+Erfahrung mit Frontend Frameworks wie Vue.js, Inertia
+Erfahrung mit Build Tools wie Webpack
+Kentnisse im Umgang mit Unix Konsolen Tools (ssh, git etc.)
+Erfahrung mit Webserver Technologien (Apache, Nginx)"
 EOT;
 
     protected Collection $messages;
