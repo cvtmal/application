@@ -2,7 +2,8 @@
 
 ![Tests](https://github.com/cvtmal/application/actions/workflows/tests.yml/badge.svg)
 
-Created as part of an application process!  
+### Created as part of an application process for Racerfish AG.
+
 This site is a simple, interactive way to learn more about me. It features an input prompt where visitors can ask questions about my background, experience, and anything else they’re curious about.
 
 ## 🚀 Features
