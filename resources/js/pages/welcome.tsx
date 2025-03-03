@@ -116,7 +116,9 @@ export default function Welcome({ chatHistory = [] }) {
                                 <div className="space-y-4 pb-4">
                                     {chatHistory.length === 0 && (
                                         <div className="text-center text-gray-500 py-10">
-                                            Beginne ein Gespräch, indem du eine Frage über Real Life Damian stellst! AI Damian wird dir antworten.
+                                            Beginne ein Gespräch, indem du eine Frage über Real Life Damian stellst! <br/>
+                                            AI Damian wird dir antworten. <br/><br/><br/><br/>
+                                            * Es werden keine persönlichen Daten gespeichert.
                                         </div>
                                     )}
 
@@ -182,6 +184,7 @@ export default function Welcome({ chatHistory = [] }) {
                         </CardFooter>
                     </Card>
                 </div>
+
                 <div className="mt-5 2xl:mt-15">
                     <a
                         href="https://github.com/cvtmal/application"

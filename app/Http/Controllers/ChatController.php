@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\LogChatRequestJob;
 use App\Services\ChatService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,6 +50,8 @@ class ChatController extends Controller
         ];
 
         session(['chat_history' => $chatHistory]);
+
+        LogChatRequestJob::dispatch();
 
         return redirect()->back();
     }
