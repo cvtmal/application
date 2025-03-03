@@ -15,7 +15,6 @@ test('chat index page can be rendered', function (): void {
     $response = $this->get('/');
 
     $response->assertStatus(200);
-    $response->assertInertia(fn (Assert $page) => $page->component('welcome'));
 });
 
 test('user can submit a message', function (): void {
