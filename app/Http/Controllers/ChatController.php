@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Services\ChatService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class ChatController extends Controller
 {
@@ -15,7 +17,7 @@ class ChatController extends Controller
         $this->chatService = $chatService;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $chatHistory = session('chat_history', []);
 
@@ -24,7 +26,7 @@ class ChatController extends Controller
         ]);
     }
 
-    public function submitMessage(Request $request)
+    public function submitMessage(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'message' => 'required|string|max:1000',
@@ -51,9 +53,8 @@ class ChatController extends Controller
         return redirect()->back();
     }
 
-    public function clearChat(Request $request)
+    public function clearChat(Request $request): RedirectResponse
     {
-        // Clear chat history in session
         session()->forget('chat_history');
 
         return redirect()->route('chat.index');

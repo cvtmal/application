@@ -94,7 +94,7 @@ export default function Welcome({ chatHistory = [] }) {
                     </div>
 
                     <Card className="w-full shadow-lg">
-                        <CardHeader className="border-b flex flex-row justify-between items-center p-4">
+                        <CardHeader className="border-b flex flex-row justify-between items-center pb-1 2xl:pb-4">
                             <CardTitle className="text-l font-semibold">Hey! Ich bin Damians AI. Was möchtest Du wissen?</CardTitle>
                             {chatHistory.length > 0 && (
                                 <Button
@@ -108,10 +108,10 @@ export default function Welcome({ chatHistory = [] }) {
                             )}
                         </CardHeader>
 
-                        <div className="h-96 overflow-hidden">
+                        <div className="h-70 2xl:h-150 overflow-hidden">
                             <ScrollArea
                                 ref={scrollAreaRef}
-                                className="h-full p-4"
+                                className="h-full p-4 text-sm"
                             >
                                 <div className="space-y-4 pb-4">
                                     {chatHistory.length === 0 && (
@@ -128,7 +128,7 @@ export default function Welcome({ chatHistory = [] }) {
                                             <div
                                                 className={`max-w-[80%] p-3 rounded-lg ${
                                                     msg.type === 'user'
-                                                        ? 'bg-blue-500 text-white rounded-br-none'
+                                                        ? 'bg-[#fecd2f] text-gray-800 rounded-br-none'
                                                         : 'bg-gray-200 text-gray-800 rounded-bl-none'
                                                 }`}
                                             >
@@ -154,7 +154,7 @@ export default function Welcome({ chatHistory = [] }) {
                             </ScrollArea>
                         </div>
 
-                        <CardFooter className="border-t pt-4 p-4">
+                        <CardFooter className="border-t pt-4 2xl:p-4">
                             <form onSubmit={handleSubmit} className="w-full">
                                 <div className="flex space-x-2">
                                     <Input
@@ -182,9 +182,9 @@ export default function Welcome({ chatHistory = [] }) {
                         </CardFooter>
                     </Card>
                 </div>
-                <div className="mt-15">
+                <div className="mt-5 2xl:mt-15">
                     <a
-                        href="https://github.com/cvtmal"
+                        href="https://github.com/cvtmal/application"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-4 text-[#001A23] hover:scale-110 transition-transform"
