@@ -74,9 +74,9 @@ export default function Welcome({ chatHistory = [] }) {
 
             <div className="min-h-screen w-full flex flex-col items-center justify-start bg-[#E8F1F2] p-4 pt-8">
                 <div className="w-full max-w-2xl flex flex-col items-center">
-                    <div className="w-full flex flex-col items-center justify-center -mt-10 mb-10">
+                    <div className="w-full flex flex-col items-center justify-center md:-mt-10 mb-10">
                         <div className="flex flex-col md:relative md:w-80 md:h-60">
-                            <div className="w-full max-w-xs mx-auto mb-2 md:mb-0 md:absolute md:w-50 md:top-15 md:-left-30 md:z-10">
+                            <div className="hidden md:block w-full max-w-xs mx-auto mb-2 md:mb-0 md:absolute md:w-50 md:top-15 md:-left-30 md:z-10">
                                 <video
                                     ref={videoRef}
                                     src="/videos/skate.webm"
