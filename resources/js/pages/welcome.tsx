@@ -4,7 +4,7 @@ import { useForm } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -22,10 +22,12 @@ export default function Welcome({ chatHistory = [] }) {
         if (messagesEndRef.current) {
             // Use setTimeout to ensure scrolling happens after render
             setTimeout(() => {
-                messagesEndRef.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'end'
-                });
+                if (messagesEndRef.current) {
+                    messagesEndRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'end'
+                    });
+                }
             }, 100);
         }
     };
@@ -178,6 +180,12 @@ export default function Welcome({ chatHistory = [] }) {
                                 {errors.message && (
                                     <Alert variant="destructive" className="mt-2 py-2">
                                         <AlertDescription>{errors.message}</AlertDescription>
+                                    </Alert>
+                                )}
+
+                                {flash.error && (
+                                    <Alert variant="destructive" className="mt-2 py-2">
+                                        <AlertDescription>{flash.error}</AlertDescription>
                                     </Alert>
                                 )}
                             </form>

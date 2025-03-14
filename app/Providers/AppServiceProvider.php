@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->registerSecurityConfig();
     }
 
     /**
@@ -74,5 +74,15 @@ class AppServiceProvider extends ServiceProvider
     private function configureVite(): void
     {
         Vite::useAggressivePrefetching();
+    }
+
+    /**
+     * Register security configuration.
+     */
+    private function registerSecurityConfig(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/security.php', 'security'
+        );
     }
 }
