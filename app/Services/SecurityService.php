@@ -62,6 +62,22 @@ class SecurityService
      */
     public function supervisorCheck(string $userInput, array $conversationContext = []): array
     {
+        // Whitelist
+        $commonGreetings = [
+            'hey', 'hello', 'hi', 'greetings', 'good morning', 'good afternoon',
+            'good evening', 'how are you', 'how\'s it going', 'what\'s up'
+        ];
+
+        if (in_array(strtolower(trim($userInput)), $commonGreetings, true)) {
+            return [
+                'isAllowed' => true,
+                'reason' => 'Simple greeting detected',
+                'safeReason' => null,
+                'sanitizedInput' => $userInput,
+                'riskScore' => 0,
+            ];
+        }
+
         $messages = collect();
 
         // Add system message with supervisor instructions
