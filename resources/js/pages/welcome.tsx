@@ -13,6 +13,7 @@ export default function Welcome({ chatHistory = [] }) {
     const messagesEndRef = useRef(null);
     const scrollAreaRef = useRef(null);
     const videoRef = useRef(null);
+    const inputRef = useRef(null);
 
     const { data, setData, post, processing, errors, reset } = useForm({
         message: '',
@@ -20,7 +21,6 @@ export default function Welcome({ chatHistory = [] }) {
 
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
-            // Use setTimeout to ensure scrolling happens after render
             setTimeout(() => {
                 if (messagesEndRef.current) {
                     messagesEndRef.current.scrollIntoView({
@@ -33,11 +33,13 @@ export default function Welcome({ chatHistory = [] }) {
     };
 
     useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
         scrollToBottom();
     }, [chatHistory]);
 
     useEffect(() => {
-        // Autoplay when component mounts
         if (videoRef.current) {
             videoRef.current.play().catch(e => console.log("Auto-play prevented:", e));
         }
@@ -58,6 +60,12 @@ export default function Welcome({ chatHistory = [] }) {
             preserveScroll: true,
             onSuccess: () => {
                 reset('message');
+                // Focus back on the input field after submission
+                setTimeout(() => {
+                    if (inputRef.current) {
+                        inputRef.current.focus();
+                    }
+                }, 0);
             },
         });
     }
@@ -162,6 +170,7 @@ export default function Welcome({ chatHistory = [] }) {
                             <form onSubmit={handleSubmit} className="w-full">
                                 <div className="flex space-x-2">
                                     <Input
+                                        ref={inputRef}
                                         type="text"
                                         placeholder="Frag mich..."
                                         className="w-full"
