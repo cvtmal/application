@@ -6,7 +6,6 @@ use EchoLabs\Prism\Enums\Provider;
 use EchoLabs\Prism\Prism;
 use EchoLabs\Prism\ValueObjects\Messages\SystemMessage;
 use EchoLabs\Prism\ValueObjects\Messages\UserMessage;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
 class SecurityService
@@ -21,7 +20,7 @@ class SecurityService
         if (strlen($userInput) > $maxInputLength) {
             return [
                 'passed' => false,
-                'reason' => "Input exceeds maximum allowed length of {$maxInputLength} characters"
+                'reason' => "Input exceeds maximum allowed length of {$maxInputLength} characters",
             ];
         }
 
@@ -31,7 +30,7 @@ class SecurityService
             if (preg_match($pattern, $userInput)) {
                 return [
                     'passed' => false,
-                    'reason' => "Input contains disallowed patterns"
+                    'reason' => 'Input contains disallowed patterns',
                 ];
             }
         }
@@ -50,7 +49,7 @@ class SecurityService
             if (preg_match($pattern, $userInput)) {
                 return [
                     'passed' => false,
-                    'reason' => "Potential prompt injection detected"
+                    'reason' => 'Potential prompt injection detected',
                 ];
             }
         }
@@ -69,7 +68,7 @@ class SecurityService
         $messages->push(new SystemMessage(config('systemprompts.supervisor_prompt')));
 
         // Add truncated conversation context if needed
-        if (!empty($conversationContext)) {
+        if ($conversationContext !== []) {
             $reducedContext = $this->getReducedContext($conversationContext);
             foreach ($reducedContext as $message) {
                 $messages->push(
@@ -90,7 +89,7 @@ class SecurityService
             $response = Prism::text()
                 ->using(Provider::OpenAI, $securityModel)
                 ->withMessages($messages->toArray())
-                ->withTemperature(0.1) // Low temperature for consistency
+                ->usingTemperature(0.1) // Low temperature for consistency
                 ->generate();
 
             // Parse the response as JSON
@@ -98,10 +97,10 @@ class SecurityService
 
             // If we couldn't parse the JSON or it doesn't have the expected format,
             // default to allowing the request but log the issue
-            if (!$assessment || !isset($assessment['allow'])) {
+            if (! $assessment || ! isset($assessment['allow'])) {
                 Log::warning('Security model returned invalid response', [
                     'response' => $response->text,
-                    'input' => $userInput
+                    'input' => $userInput,
                 ]);
 
                 return [
@@ -126,14 +125,14 @@ class SecurityService
             // Log the error
             Log::error('Error in supervisor check', [
                 'message' => $e->getMessage(),
-                'input' => $userInput
+                'input' => $userInput,
             ]);
 
             // Default to allowing with the original input if security check fails
             // You might want to be more strict and reject instead
             return [
                 'isAllowed' => true,
-                'reason' => 'Security check failed: ' . $e->getMessage(),
+                'reason' => 'Security check failed: '.$e->getMessage(),
                 'safeReason' => null,
                 'sanitizedInput' => $userInput,
                 'riskScore' => 0.5,
@@ -149,10 +148,10 @@ class SecurityService
         // Take only the last 3 messages and truncate their content
         $truncatedContext = array_slice($fullContext, -3);
 
-        return array_map(function($item) {
+        return array_map(function ($item) {
             return [
                 'type' => $item['type'],
-                'content' => substr($item['content'], 0, 200) // Truncate to 200 chars
+                'content' => substr($item['content'], 0, 200), // Truncate to 200 chars
             ];
         }, $truncatedContext);
     }
@@ -164,7 +163,7 @@ class SecurityService
     {
         Log::warning('Message rejected by security service', [
             'input' => $userInput,
-            'reason' => $reason
+            'reason' => $reason,
         ]);
     }
 }

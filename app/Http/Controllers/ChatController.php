@@ -48,7 +48,7 @@ class ChatController extends Controller
         // Get response from chat service, which now includes security checks
         $result = $this->chatService->getResponseForMessage($validated['message']);
 
-        if (!$result['success']) {
+        if (! $result['success']) {
             // If security check failed, add a system message explaining why
             $chatHistory[] = [
                 'type' => 'assistant',
@@ -62,7 +62,7 @@ class ChatController extends Controller
             if (config('security.log_rejections', true)) {
                 Log::warning('Message rejected', [
                     'message' => $validated['message'],
-                    'reason' => $result['reason'] ?? 'Unknown'
+                    'reason' => $result['reason'] ?? 'Unknown',
                 ]);
             }
 

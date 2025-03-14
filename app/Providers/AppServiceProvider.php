@@ -82,7 +82,7 @@ class AppServiceProvider extends ServiceProvider
     private function registerSecurityConfig(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/security.php', 'security'
+            __DIR__.'/../../config/security.php', 'security'
         );
     }
 }

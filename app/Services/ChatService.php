@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 class ChatService
 {
     protected Collection $messages;
+
     protected SecurityService $securityService;
 
     public function __construct(SecurityService $securityService)
@@ -44,11 +45,11 @@ class ChatService
     {
         // STEP 1: Perform basic security checks first (non-AI based)
         $initialChecks = $this->securityService->performBasicSecurityChecks($userMessage);
-        if (!$initialChecks['passed']) {
+        if (! $initialChecks['passed']) {
             return [
                 'success' => false,
                 'message' => "Sorry, I can't process that message.",
-                'reason' => $initialChecks['reason']
+                'reason' => $initialChecks['reason'],
             ];
         }
 
@@ -56,20 +57,20 @@ class ChatService
         $supervisorCheck = $this->securityService->supervisorCheck($userMessage, $this->getHistoryAsArray());
 
         // STEP 3: If the supervisor model rejects the input, return an error
-        if (!$supervisorCheck['isAllowed']) {
+        if (! $supervisorCheck['isAllowed']) {
             // Log the rejection
             $this->securityService->logRejection($userMessage, $supervisorCheck['reason']);
 
             return [
                 'success' => false,
                 'message' => "I can't respond to that request.",
-                'reason' => $supervisorCheck['safeReason'] ?? 'This request is not allowed by our policies.'
+                'reason' => $supervisorCheck['safeReason'] ?? 'This request is not allowed by our policies.',
             ];
         }
 
         // STEP 4: Use the sanitized input from the supervisor
         $sanitizedInput = $supervisorCheck['sanitizedInput'];
-        
+
         // Add the sanitized user message to the messages collection
         $this->messages->push(new UserMessage($sanitizedInput));
 
@@ -87,21 +88,21 @@ class ChatService
                 'success' => true,
                 'message' => $response->text,
                 'metrics' => [
-                    'riskScore' => $supervisorCheck['riskScore'] ?? 0
-                ]
+                    'riskScore' => $supervisorCheck['riskScore'] ?? 0,
+                ],
             ];
         } catch (\Exception $e) {
-        Log::error('Error generating response', [
-            'message' => $e->getMessage(),
-            'userInput' => $userMessage
-        ]);
+            Log::error('Error generating response', [
+                'message' => $e->getMessage(),
+                'userInput' => $userMessage,
+            ]);
 
-        return [
-            'success' => false,
-            'message' => "I'm sorry, I encountered an error while processing your request.",
-            'reason' => 'AI service error'
-        ];
-    }
+            return [
+                'success' => false,
+                'message' => "I'm sorry, I encountered an error while processing your request.",
+                'reason' => 'AI service error',
+            ];
+        }
     }
 
     public function getMessages(): Collection
@@ -114,7 +115,7 @@ class ChatService
         $systemPrompt = config('systemprompts.system_prompt');
         $damianInfo = config('systemprompts.damian');
 
-        return $systemPrompt . ' ' . $damianInfo;
+        return $systemPrompt.' '.$damianInfo;
     }
 
     /**
@@ -128,12 +129,12 @@ class ChatService
             if ($message instanceof UserMessage) {
                 $history[] = [
                     'type' => 'user',
-                    'content' => $message->content
+                    'content' => $message->text(),
                 ];
-            } else if ($message instanceof AssistantMessage) {
+            } elseif ($message instanceof AssistantMessage) {
                 $history[] = [
                     'type' => 'assistant',
-                    'content' => $message->content
+                    'content' => $message->content,
                 ];
             }
             // We skip SystemMessage as it contains sensitive information
