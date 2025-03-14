@@ -1,4 +1,4 @@
-# 🧑‍💻 Personal Website – Application Project
+# 🧑‍💻 Application Project for Racerfish AG
 
 ![Tests](https://github.com/cvtmal/application/actions/workflows/tests.yml/badge.svg)
 
@@ -41,3 +41,8 @@ cd your-repo-name
 composer install
 cp .env.example .env
 php artisan key:generate
+```
+
+### Environment Setup
+
+Use the `.env` file to configure your environment variables. Make sure to set up your Laravel Prism API key and any other necessary configurations.
