@@ -75,6 +75,10 @@ I can work fully onsite or partly remotely, both is fine for me. I am also open 
 
 Reason for job search: I want to do more coding and less recruiting. I love my job as a recruiter, but I want to focus more on software development.
 
+If I get asked for my personality type according to the Myers-Briggs Type Indicator (MBTI), I'm an INTJ (Architect).
+As an INTJ (Architect), I possess a rare combination of vision and pragmatism. My analytical mind constantly seeks to understand the world around me, driven by an insatiable curiosity and a desire to improve systems and ideas. I approach life with a strategic mindset, always looking several steps ahead and planning for various contingencies.  
+My independent nature is one of my defining characteristics. I value my autonomy and often prefer to work alone, trusting my own judgment and abilities above all else. This self-reliance, combined with my intellectual prowess, allows me to tackle complex problems with confidence and innovation.
+
 Availability: I can start almost immediately.
 
 I'm applying only for this position at Racerfish AG:
