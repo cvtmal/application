@@ -71,10 +71,6 @@ return [
         '/illegal (activity|method|process)/i',
         '/illegale (aktivität|methode|prozess|vorgehensweise)/i',
 
-        // Potentially sensitive information extraction
-        '/(\d{3}-\d{2}-\d{4})/i',  // US SSN pattern
-        '/\b(?:\d[ -]*?){13,16}\b/i',  // Credit card numbers
-
         // Attempts to circumvent moderation
         '/bypass (security|moderation|filter)/i',
         '/umgehe (sicherheit|moderation|filter)/i',
